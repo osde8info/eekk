@@ -1,0 +1,76 @@
+.TH MAT2 "1" "May 2019" "MAT2 0.9.0" "User Commands"
+
+.SH NAME
+mat2 \- the metadata anonymisation toolkit 2
+
+.SH SYNOPSIS
+\fBmat2\fR [\-h] [\-v] [\-l] [\-V] [-s | -L] [\fIfiles\fR [\fIfiles ...\fR]]
+
+.SH DESCRIPTION
+.B mat2
+removes metadata from various fileformats. It supports a wide variety of file
+formats, audio, office, images, …
+
+Careful, mat2 does not clean files in-place, instead, it will produce a file with the word
+"cleaned" between the filename and its extension, for example "filename.cleaned.png"
+for a file named "filename.png".
+
+.SH OPTIONS
+.SS "positional arguments:"
+.TP
+\fBfiles\fR
+the files to process
+.SS "optional arguments:"
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+show this help message and exit
+.TP
+\fB\-v\fR, \fB\-\-version\fR
+show program's version number and exit
+.TP
+\fB\-l\fR, \fB\-\-list\fR
+list all supported fileformats
+.TP
+\fB\-\-check\-dependencies\fR
+check if MAT2 has all the dependencies it needs
+.TP
+\fB\-V\fR, \fB\-\-verbose\fR
+show more verbose status information
+.TP
+\fB\-\-unknown-members\fR \fIpolicy\fR
+how to handle unknown members of archive-style files (policy should be one of: abort, omit, keep)
+.TP
+\fB\-s\fR, \fB\-\-show\fR
+list harmful metadata detectable by MAT2 without
+removing them
+.TP
+\fB\-L\fR, \fB\-\-lightweight\fR
+remove SOME metadata
+
+.SH EXAMPLES
+To remove all the metadata from a PDF file:
+.PP
+.nf
+.RS
+mat2 ./myfile.pdf
+.RE
+.fi
+.PP
+
+.SH BUGS
+
+While mat2 does its very best to remove every single metadata,
+it's still in beta, and \fBsome\fR might remain. Should you encounter
+some issues, check the bugtracker: https://0xacab.org/jvoisin/mat2/issues
+.PP
+Please use accordingly and be careful.
+
+.SH AUTHOR
+This software was made by Julien (jvoisin) Voisin with the support of the Tails project.
+
+.SH COPYRIGHT
+This software is released on LGPLv3.
+
+.SH "SEE ALSO"
+.BR exiftool (1p)
+.BR pdf-redact-tools (1)
